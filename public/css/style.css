@@ -22,3 +22,7 @@ h1{
 .form-control{
   width: 200px;
 }
+
+#description{
+  width: 500px;
+}
