@@ -16,8 +16,8 @@
     <label for="nom">Nom de l'animal</label>
     <input class="form-control-sm" type="text" name="nom">
   </div>
-  <label for="espèce">Espèce</label>
-    <select class="form-control" id="espèce" name="espèce">
+  <label for="specie">Espèce</label>
+    <select class="form-control" id="specie" name="specie">
       <option>Poissons</option>
       <option>Mollusques</option>
       <option>Cnidaires</option>
@@ -121,10 +121,11 @@
 </div>
 
 <?php 
-  $user = "root";
+  $user = "root";  // <- ??? voir fichier includes/connect.php 
   $pass = "";
   
   if(isset($_POST)){
+    $specie = $_POST['specie'];
     $nom = $_POST['nom'];
     $deep_min = $_POST['deep_min'];
     $deep_max = $_POST['deep_max'];
@@ -139,7 +140,6 @@
     $food = $_POST['food'];
     $video = $_POST['video_link'];
     $video_alt = $_POST['video_alt'];
-    $espèce = $_POST['espèce'];
   }
 
     try{
@@ -148,8 +148,9 @@
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
       $sth = $pdo->prepare(
-      INSERT INTO `species`(`id`, `name`, `deep_min`, `deep_max`, `life_time`, `weight`, `size`, `life_area`, `description`, `image_link`, `image_alt`, `reproduction`, `food`, `video_link`, `video_alt`, `espèce`)
-       VALUES (:nom,:deep_min,:deep_max,:life_time,:weight,:size,:life_area,:description,:image_link,:image_alt,:reproduction,:food,:video_link,:video_alt,:espèce);
+      INSERT INTO `species`(`id`, `specie`, `name`, `deep_min`, `deep_max`, `life_time`, `weight`, `size`, `life_area`, `description`, `image_link`, `image_alt`, `reproduction`, `food`, `video_link`, `video_alt`)
+       VALUES (:specie,:nom,:deep_min,:deep_max,:life_time,:weight,:size,:life_area,:description,:image_link,:image_alt,:reproduction,:food,:video_link,:video_alt);
+      $sth->bindParam(":specie",$specie);
       $sth->bindParam(":nom",$nom);
       $sth->bindParam(":deep_min",$deep_min);
       $sth->bindParam(":deep_max",$deep_max);
@@ -164,8 +165,7 @@
       $sth->bindParam(":food",$food);
       $sth->bindParam("video_link",$video);
       $sth->bindParam(":video_alt",$video_alt);
-      $sth->bindParam(":espèce",$espèce);
-           
+  
       $sth->execute();
 
     }
