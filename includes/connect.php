@@ -9,5 +9,6 @@ try {
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
 } catch (PDOException $e) {
+    sql_to_json(false, "Pas de résultat");
     die('Impossible de se connecter au serveur MySQL: ' . $e->getMessage());
 }
