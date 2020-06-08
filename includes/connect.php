@@ -1,6 +1,14 @@
 <?php
+require_once __DIR__ . '/param.php';
+
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=api_pal", "root", "");
+    $dsn = sprintf("mysql:host=%s;port=%d;dbname=%s", DB_HOST, DB_PORT, DB_NAME);
+
+    $pdo = new PDO($dsn, DB_USERNAME, DB_PASSWORD, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ]);
 } catch (PDOException $e) {
-    die($e->getMessage());
+    sql_to_json(false, "Pas de résultat");
+    die('Impossible de se connecter au serveur MySQL: ' . $e->getMessage());
 }
