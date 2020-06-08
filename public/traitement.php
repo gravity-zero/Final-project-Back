@@ -1,5 +1,5 @@
 <?php 
-/*
+
   $user = "root";  // <- ??? voir fichier includes/connect.php 
   $pass = "";
   
@@ -23,14 +23,14 @@
 
     try{
       //instructions à faire dont certaines (ou toutes) menent à une exception
-      $pdo = new PDO("mysql:host=localhost;dbname=api_PAL", $user, $pass);
+      $pdo = new PDO("mysql:host=localhost;port=3308; dbname=api_pal", $user, $pass);
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      $sth = $pdo->prepare(
-      INSERT INTO `species`(`id`, `specie`, `name`, `deep_min`, `deep_max`, `life_time`, `weight`, `size`, `life_area`, `description`, `image_link`, `image_alt`, `reproduction`, `food`, `video_link`, `video_alt`)
-       VALUES (:specie,:nom,:deep_min,:deep_max,:life_time,:weight,:size,:life_area,:description,:image_link,:image_alt,:reproduction,:food,:video_link,:video_alt);
+      $sth = $pdo->prepare(" 
+      INSERT INTO species(specie, name, deep_min, deep_max, life_time, weight, size, life_area, description, image_link, image_alt, reproduction, food, video_link, video_alt)
+       VALUES (:specie,:nom, :deep_min, :deep_max,:life_time,:weight,:size, :life_area, :description, :image_link, :image_alt,  :reproduction, :food, :video_link, :video_alt)");
       $sth->bindParam(":specie",$specie);
-      $sth->bindParam(":nom",$nom);
+      $sth->bindParam(":name",$nom);
       $sth->bindParam(":deep_min",$deep_min);
       $sth->bindParam(":deep_max",$deep_max);
       $sth->bindParam(":life_time",$life_time);
@@ -51,6 +51,6 @@
     catch(PDOException $e){
       echo 'Impossible de traiter les données. Erreur : '.$e->getMessage();
     }
-  */
+  
   ?>
 
