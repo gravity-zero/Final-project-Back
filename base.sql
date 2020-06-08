@@ -9,8 +9,8 @@ CREATE TABLE IF NOT EXISTS species (
   id INT(4) NOT NULL AUTO_INCREMENT,
   specie VARCHAR(255) NOT NULL,
   name VARCHAR(255) NOT NULL,
-  deep_min INT(4) NOT NULL DEFAULT 0,
-  deep_max INT(4) NOT NULL DEFAULT 11034,
+  deep_min INT(4) NOT NULL,
+  deep_max INT(4) NOT NULL,
   life_time INT(4) NULL,
   weight INT(4) NULL,
   size INT(4) NULL,
@@ -23,4 +23,4 @@ CREATE TABLE IF NOT EXISTS species (
   video_link VARCHAR(255) NULL,
   video_alt VARCHAR(255) NULL,
   PRIMARY KEY (`id`)
-)ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+)ENGINE=innodb DEFAULT;

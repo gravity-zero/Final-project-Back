@@ -13,8 +13,8 @@
   <h1>Pannel Administration</h1>
   <form method="post" action="traitement.php" class="containerstyle">
   <div class="form-group">
-    <label for="nom">Nom de l'animal</label>
-    <input class="form-control-sm" type="text" name="nom">
+    <label for="name">Nom de l'animal</label>
+    <input class="form-control-sm" type="text" name="name">
   </div>
   <div class="form-group">
   <label for="specie">Espèce</label>

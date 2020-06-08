@@ -1,11 +1,11 @@
 <?php 
-
   $user = "root";  // <- ??? voir fichier includes/connect.php 
   $pass = "";
-  
-  if(isset($_POST['send'])){
+
+  if(isset($_POST['send']))
+  {
     $specie = $_POST['specie'];
-    $nom = $_POST['nom'];
+    $name = $_POST['name'];
     $deep_min = $_POST['deep_min'];
     $deep_max = $_POST['deep_max'];
     $life_time = $_POST['life_time'];
@@ -13,11 +13,11 @@
     $size = $_POST['size'];
     $life_area = $_POST['life_area'];
     $description = $_POST['description'];
-    $image = $_POST['image_link'];
+    $image_link = $_POST['image_link'];
     $image_alt = $_POST['image_alt'];
     $reproduction = $_POST['reproduction'];
     $food = $_POST['food'];
-    $video = $_POST['video_link'];
+    $video_link = $_POST['video_link'];
     $video_alt = $_POST['video_alt'];
   }
 
@@ -38,18 +38,18 @@
       $sth->bindParam(":size",$size);
       $sth->bindParam(":life_area",$life_area);
       $sth->bindParam(":description",$description);
-      $sth->bindParam(":image_link",$image);
+      $sth->bindParam(":image_link",$image_link);
       $sth->bindParam(":image_alt",$image_alt);
       $sth->bindParam(":reproduction",$reproduction);
       $sth->bindParam(":food",$food);
-      $sth->bindParam("video_link",$video);
+      $sth->bindParam("video_link",$video_link);
       $sth->bindParam(":video_alt",$video_alt);
-  
-      $sth->execute();
 
+      $sth->execute();
     }
+
     catch(PDOException $e){
-      echo 'Impossible de traiter les données. Erreur : '.$e->getMessage();
+      echo 'Impossible de traiter les données. Erreur : '. $e->getMessage();
     }
   
   ?>
