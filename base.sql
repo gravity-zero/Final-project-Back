@@ -23,4 +23,4 @@ CREATE TABLE IF NOT EXISTS species (
   video_link VARCHAR(255) NULL,
   video_alt VARCHAR(255) NULL,
   PRIMARY KEY (`id`)
-)ENGINE=innodb DEFAULT;
+)ENGINE=innodb;
