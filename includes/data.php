@@ -1,7 +1,7 @@
 <?php
 
   $data = [
-      "espece" => [
+      "species" => [
         "titre" => "nom du fish",
         // ... etc
 

@@ -1,6 +1,6 @@
 <?php 
-  $user = "root";  // <- ??? voir fichier includes/connect.php 
-  $pass = "";
+
+ require_once ('../includes/connect.php');
 
   if(isset($_POST['send']))
   {
@@ -23,10 +23,7 @@
 
     try{
       //instructions à faire dont certaines (ou toutes) menent à une exception
-      $pdo = new PDO("mysql:host=localhost;port=3308; dbname=api_pal", $user, $pass);
-      echo 'Connected to database';
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+      echo "ok";
       $sth = $pdo->prepare(
       'INSERT INTO species(specie, name, deep_min, deep_max, life_time, weight, size, life_area, description, image_link, image_alt, reproduction, food, video_link, video_alt)
        VALUES (:specie,:name,:deep_min,:deep_max,:life_time,:weight,:size,:life_area,:description,:image_link,:image_alt,:reproduction,:food,:video_link,:video_alt)');
