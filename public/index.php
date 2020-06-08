@@ -1,12 +1,16 @@
 <?php
 
-require "../vendor/autoload.php";
+//require "../vendor/autoload.php";
+
+require_once ('../includes/connect.php');
 
 header('Content-Type: application/json');
 
-$retour = array();
-$retour["success"] = true;
-$retour["message"] = "ok";
-$retour["result"]["species"] = array("requin", "test");
+$requete = $pdo->prepare("SELECT * FROM `species`");
+$requete->execute();
+$result = $requete->fetchAll();
 
-echo json_encode($retour);
+$response["success"] = true;
+$response["results"]["total_result"] = count($result);
+$response["results"]["species"] = $result;
+echo json_encode($response);

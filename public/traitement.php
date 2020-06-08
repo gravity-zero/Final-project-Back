@@ -4,7 +4,7 @@
 
   if(isset($_POST['send']))
   {
-    $specie = $_POST['specie'];
+    $family = $_POST['family'];
     $name = $_POST['name'];
     $deep_min = $_POST['deep_min'];
     $deep_max = $_POST['deep_max'];
@@ -25,10 +25,10 @@
       //instructions à faire dont certaines (ou toutes) menent à une exception
       echo "ok";
       $sth = $pdo->prepare(
-      'INSERT INTO species(specie, name, deep_min, deep_max, life_time, weight, size, life_area, description, image_link, image_alt, reproduction, food, video_link, video_alt)
-       VALUES (:specie,:name,:deep_min,:deep_max,:life_time,:weight,:size,:life_area,:description,:image_link,:image_alt,:reproduction,:food,:video_link,:video_alt)');
+      'INSERT INTO species(family, name, deep_min, deep_max, life_time, weight, size, life_area, description, image_link, image_alt, reproduction, food, video_link, video_alt)
+       VALUES (:family,:name,:deep_min,:deep_max,:life_time,:weight,:size,:life_area,:description,:image_link,:image_alt,:reproduction,:food,:video_link,:video_alt)');
       
-      $sth->bindParam(":specie",$specie);
+      $sth->bindParam(":family",$family);
       $sth->bindParam(":name",$name);
       $sth->bindParam(":deep_min",$deep_min);
       $sth->bindParam(":deep_max",$deep_max);
