@@ -6,11 +6,11 @@
   <link href="boostrap/css/bootstrap.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <script src="boostrap/js/bootstrap.js"></script>
-  <title>Pannel admin</title>
+  <title>Pannel admin - Ajout</title>
 </head>
 <body>
 <div class = "form">
-  <h1>Pannel Administration</h1>
+  <h1>Pannel Administration - Ajout</h1>
   <form method="post" action="traitement.php" class="containerstyle">
   <div class="form-group">
     <label for="name">Nom de l'animal</label>

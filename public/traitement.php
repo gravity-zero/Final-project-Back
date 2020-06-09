@@ -23,7 +23,6 @@
 
     try{
       //instructions à faire dont certaines (ou toutes) menent à une exception
-      echo "ok";
       $sth = $pdo->prepare(
       'INSERT INTO species(family, name, deep_min, deep_max, life_time, weight, size, life_area, description, image_link, image_alt, reproduction, food, video_link, video_alt)
        VALUES (:family,:name,:deep_min,:deep_max,:life_time,:weight,:size,:life_area,:description,:image_link,:image_alt,:reproduction,:food,:video_link,:video_alt)');
