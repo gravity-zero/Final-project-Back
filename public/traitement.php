@@ -1,10 +1,10 @@
 <?php 
-  $user = "root";  // <- ??? voir fichier includes/connect.php 
-  $pass = "";
+
+ require_once ('../includes/connect.php');
 
   if(isset($_POST['send']))
   {
-    $specie = $_POST['specie'];
+    $family = $_POST['family'];
     $name = $_POST['name'];
     $deep_min = $_POST['deep_min'];
     $deep_max = $_POST['deep_max'];

@@ -17,8 +17,8 @@
     <input class="form-control-sm" type="text" name="name">
   </div>
   <div class="form-group">
-  <label for="specie">Espèce</label>
-    <select class="form-control-sm" id="specie" name="specie">
+  <label for="family">Espèce</label>
+    <select class="form-control-sm" id="family" name="family">
       <option>Poissons</option>
       <option>Mollusques</option>
       <option>Cnidaires</option>

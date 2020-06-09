@@ -7,7 +7,7 @@ USE api_pal;
 --  Création de la table "species"
 CREATE TABLE IF NOT EXISTS species (
   id INT(4) NOT NULL AUTO_INCREMENT,
-  specie VARCHAR(255) NOT NULL,
+  family VARCHAR(255) NOT NULL,
   name VARCHAR(255) NOT NULL,
   deep_min INT(4) NOT NULL,
   deep_max INT(4) NOT NULL,
