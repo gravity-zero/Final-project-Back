@@ -24,6 +24,7 @@ class ComposerStaticInit6bea521b77887b76e010c5ee022c5455
         ),
         'F' => 
         array (
+            'FinalBack\\' => 10,
             'FastRoute\\' => 10,
         ),
     );
@@ -50,6 +51,10 @@ class ComposerStaticInit6bea521b77887b76e010c5ee022c5455
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'FinalBack\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'FastRoute\\' => 
         array (
