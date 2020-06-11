@@ -6,9 +6,27 @@ class SpeciesRepository{
     private $db;
 
     function __construct($db){
-        $this->db = $db;
+      $this->db = $db;
     }
 
+    //Pour delete certaines entrées
+    public function deleteSpecies($id){
+      $requete = $this->db->connection->prepare("DELETE FROM `species` WHERE `species`.`id` = '$id'");
+      $requete->execute();
+    }
+
+    public function updateSpecies($id, $params){
+      //Pour modifier les entrées
+    }
+
+    // Pour afficher toutes les entrées
+    public function showSpecies($id){
+      $requete = $this->db->connection->prepare("SELECT * FROM `species` ORDER BY `species`.`id` ASC");
+      $requete->execute();
+      $requete->fetchAll();
+    }
+
+    // Pour afficher toutes les entrés au format JSON
     public function getAllSpecies(){
         $requete = $this->db->connection->prepare("SELECT * FROM `species`");
         $requete->execute();
@@ -16,7 +34,7 @@ class SpeciesRepository{
     }
 
     public function createSpecies($params){
-        if(isset($params)){
+      if(isset($params)){
           $family = $params['family'];
           $name = $params['name'];
           $deep_min = $params['deep_min'];

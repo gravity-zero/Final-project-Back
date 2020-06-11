@@ -1,10 +1,7 @@
 body{
   display: flex;
   justify-content: center;
-}
-
-.form {
- background-color: rgb(16, 12, 75);
+  background-color: rgb(16, 12, 75);
   color: white;
 }
 
@@ -12,6 +9,20 @@ h1{
   text-align: center;
 }
 
+.option{
+  margin-top: 30px;
+  text-align: center;
+}
+
+.option a{
+  color: white;
+  }
+
+#addButton{
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
 .containerstyle{
   width: 60vw; 
   margin-left: 50px; 
@@ -24,5 +35,6 @@ h1{
 }
 
 #description{
-  width: 500px;
+  max-width: 500px;
+  width: 80%;
 }
