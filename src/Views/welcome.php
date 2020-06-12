@@ -10,7 +10,7 @@
   <title>Pannel Administrateur - PAL</title>
 </head>
 
-<body class="form">
+<body class="form" id="body-welcome">
   <div class="titre">
     <h1>Pannel Administrateur - PAL</h1>
     <div class="option">

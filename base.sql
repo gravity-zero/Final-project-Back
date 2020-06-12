@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS species (
   weight INT(4) NULL,
   size INT(4) NULL,
   life_area VARCHAR(255) NULL,
-  description TEXT(4) NOT NULL,
+  description TEXT NOT NULL,
   image_link VARCHAR(255) NULL,
   image_alt VARCHAR(255) NULL,
   reproduction VARCHAR(255) NULL,

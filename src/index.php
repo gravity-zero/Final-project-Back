@@ -32,7 +32,15 @@ if(isset($_GET['url'])){
   {
     $controller->show();
   }
-  else if($url == 'list') // redirection == OK
+  else if($url == 'update')
+  {
+    $controller->update();
+  }
+  else if($url == 'delete' . $id)
+  {
+    $controller->delete();
+  }
+  else if($url == 'list')
   {
     $controller->list();
   }

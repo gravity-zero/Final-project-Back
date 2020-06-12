@@ -9,22 +9,23 @@ class SpeciesRepository{
       $this->db = $db;
     }
 
-    //Pour delete certaines entrées
-    public function deleteSpecies($id){
-      $requete = $this->db->connection->prepare("DELETE FROM `species` WHERE `species`.`id` = '$id'");
-      $requete->execute();
-    }
-
     public function updateSpecies($id, $params){
       //Pour modifier les entrées
     }
 
     // Pour afficher toutes les entrées
-    public function showSpecies($id){
+    public function showSpecies(){
       $requete = $this->db->connection->prepare("SELECT * FROM `species` ORDER BY `species`.`id` ASC");
       $requete->execute();
-      $requete->fetchAll();
+      return $requete->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+        //Pour delete certaines entrées
+        public function deleteSpecies($id){
+          $requete = $this->db->connection->prepare("DELETE FROM `species` WHERE `species`.`id` =:id");
+          $requete->bindValue(':id', $id, \PDO::PARAM_INT);
+          $requete->execute();
+        }
 
     // Pour afficher toutes les entrés au format JSON
     public function getAllSpecies(){

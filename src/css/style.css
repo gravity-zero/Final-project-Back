@@ -1,12 +1,18 @@
-body{
+
+#body-welcome{
   display: flex;
   justify-content: center;
+}
+
+body{
   background-color: rgb(16, 12, 75);
   color: white;
 }
 
 h1{
   text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .option{
@@ -16,6 +22,10 @@ h1{
 
 .option a{
   color: white;
+  }
+
+  .table{
+    color: white;
   }
 
 #addButton{
