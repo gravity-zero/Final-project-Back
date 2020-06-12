@@ -20,6 +20,12 @@ h1{
   text-align: center;
 }
 
+.text-ellipsis{
+  max-width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .option a{
   color: white;
   }

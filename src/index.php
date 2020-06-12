@@ -32,19 +32,21 @@ if(isset($_GET['url'])){
   {
     $controller->show();
   }
-  else if($url == 'update')
-  {
+  else if(preg_match('#update/([0-9]+)#', $url, $params)){//update.php
+    $id = $params[1]; 
     $controller->update();
   }
-  else if($url == 'delete' . $id)
-  {
+  else if(preg_match('#delete/([0-9]+)#', $url, $params)){
+    $id = $params[1];
+    $_GET['id'] = $id;
     $controller->delete();
   }
-  else if($url == 'list')
+  else if($url == 'list') 
   {
     $controller->list();
   }
   else
   {
+    $url == "error";
     $controller->error();
   }

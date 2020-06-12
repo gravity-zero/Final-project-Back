@@ -21,11 +21,16 @@ class SpeciesRepository{
     }
 
         //Pour delete certaines entrées
-        public function deleteSpecies($id){
-          $requete = $this->db->connection->prepare("DELETE FROM `species` WHERE `species`.`id` =:id");
+        public function deleteSpecies(){
+          $url = $_GET['url'];
+          if(preg_match('#delete/([0-9]+)#', $url, $params)){
+          $id = htmlspecialchars($params[1]);
+          $requete = $this->db->connection->prepare('DELETE FROM `species` WHERE `species`.`id` = :id');
           $requete->bindValue(':id', $id, \PDO::PARAM_INT);
           $requete->execute();
         }
+      }
+        
 
     // Pour afficher toutes les entrés au format JSON
     public function getAllSpecies(){

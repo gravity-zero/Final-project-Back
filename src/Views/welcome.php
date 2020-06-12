@@ -18,6 +18,9 @@
           Espèce</a></button>
       <button type="button" class="btn btn-outline-primary"><a href="?url=show">voir la liste des
           Espèces</a></button>
+      <button type="button" class="btn btn-outline-primary">
+        <a href="?url=list">voir le JSON</a>
+      </button>
     </div>
     </main>
   </div>

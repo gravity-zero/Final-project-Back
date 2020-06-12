@@ -4,7 +4,6 @@ namespace FinalBack\Controllers;
 
 class SpeciesController{
     private $repository;
-    public $rows = array();
 
     function __construct($repository){
         $this->repository = $repository;
@@ -24,12 +23,12 @@ class SpeciesController{
     }
 
     function delete(){
-        $this->repository->deleteSpecies($_GET['id']);
+        $this->repository->deleteSpecies($_GET);
         return header('Location: ?url=show');
     }
 
     function show(){
-        $requete = $this->repository->showSpecies();
+        $requete = $this->repository->showSpecies($_GET);
         require_once __DIR__ . '/../Views/read.php'; 
     }
 
@@ -45,7 +44,7 @@ class SpeciesController{
     }
 
     function error(){
-        require_once __DIR__ . '/../Views/404.php';
+        require_once __DIR__ . '/../Views/404.php'; 
     }
 
     private function serializeToJson($data){
