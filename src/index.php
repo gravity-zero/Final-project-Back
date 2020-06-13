@@ -17,31 +17,33 @@ if(isset($_GET['url'])){
   $url = $_GET['url'];
   }
 
-  if ($url == '') {
+  if ($url == '') { //Affiche le pannel admin
     $controller->index();
   }
-  else if($url == 'form')
+  else if($url == 'form') //Affiche le formulaire
   {
     $controller->form();
   }
-  else if($url == 'create')
+  else if($url == 'create') // Post le formulaire
   {
     $controller->create();
   }
-  else if($url == 'show')
+  else if($url == 'show') //Affiche sous forme de Tableau la base
   {
     $controller->show();
   }
-  else if(preg_match('#update/([0-9]+)#', $url, $params)){//update.php
+  else if(preg_match('#update/([0-9]+)#', $url, $params)){// affiche l'entrée à modifier
     $id = $params[1]; 
+    $controller->showUpdate();
+  }
+  else if($url == 'postupdate'){// Post l'update
     $controller->update();
   }
-  else if(preg_match('#delete/([0-9]+)#', $url, $params)){
+  else if(preg_match('#delete/([0-9]+)#', $url, $params)){//Supprime l'entrée dans la base
     $id = $params[1];
-    $_GET['id'] = $id;
     $controller->delete();
   }
-  else if($url == 'list') 
+  else if($url == 'list')  //Affiche le Json
   {
     $controller->list();
   }

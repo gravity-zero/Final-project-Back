@@ -32,9 +32,14 @@ class SpeciesController{
         require_once __DIR__ . '/../Views/read.php'; 
     }
 
-    function update(){
-        $this->repository->updateSpecies($_GET, $_POST);
+    function showUpdate(){
+        $this->repository->selectUpdateSpecies($_GET);
         require_once __DIR__ . '/../Views/update.php';
+    }
+
+    function update(){
+        $this->repository->selectUpdateSpecies($_POST);
+        return header('Location: ?url=show');
     }
 
     function list(){
