@@ -1,5 +1,5 @@
 <?php
-require_once 'Models/param.php';
+require_once 'constants.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use FinalBack\Models\Database;
@@ -32,16 +32,14 @@ if(isset($_GET['url'])){
   {
     $controller->show();
   }
-  else if(preg_match('#update/([0-9]+)#', $url, $params)){// affiche l'entrée à modifier
-    $id = $params[1]; 
-    $controller->showUpdate();
+  else if($url == "update"){// affiche l'entrée à modifier
+    $controller->showUpdate($_GET['id']);
   }
   else if($url == 'postupdate'){// Post l'update
-    $controller->update();
+    $controller->update($_POST, $_GET['id']);
   }
-  else if(preg_match('#delete/([0-9]+)#', $url, $params)){//Supprime l'entrée dans la base
-    $id = $params[1];
-    $controller->delete();
+  else if($url == 'delete'){//Supprime l'entrée dans la base
+    $controller->delete($_GET['id']);
   }
   else if($url == 'list')  //Affiche le Json
   {
@@ -49,6 +47,5 @@ if(isset($_GET['url'])){
   }
   else
   {
-    $url == "error";
     $controller->error();
   }

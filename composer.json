@@ -1,7 +1,5 @@
 {
-	"require": {
-		"slim/slim": "^4.5"
-	},
+	"require": {},
 	"autoload": {
 		"psr-4": {
 			"FinalBack\\": "src/"

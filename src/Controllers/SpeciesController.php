@@ -22,8 +22,8 @@ class SpeciesController{
         return header('Location: ?url=');
     }
 
-    function delete(){
-        $this->repository->deleteSpecies($_GET);
+    function delete(int $id){
+        $this->repository->deleteSpecies($id);
         return header('Location: ?url=show');
     }
 
@@ -32,13 +32,13 @@ class SpeciesController{
         require_once __DIR__ . '/../Views/read.php'; 
     }
 
-    function showUpdate(){
-        $this->repository->selectUpdateSpecies($_GET);
+    function showUpdate($id){
+        $result = $this->repository->getSpeciesById($id);
         require_once __DIR__ . '/../Views/update.php';
     }
 
-    function update(){
-        $this->repository->selectUpdateSpecies($_POST);
+    function update($param, $id){
+        $this->repository->updateSpecies($param, $id);
         return header('Location: ?url=show');
     }
 

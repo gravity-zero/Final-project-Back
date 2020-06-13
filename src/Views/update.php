@@ -10,7 +10,7 @@
 <body>
   <div class="form">
     <h1>Pannel Administration - Edition</h1>
-    <form method="post" action="?url=postupdate" class="containerstyle">
+    <form method="post" action="?url=postupdate&id=<?= $result['id'] ?>" class="containerstyle">
       <div class="form-group">
         <label for="name">Nom de l'animal</label>
         <input class="form-control-sm" type="text" name="name" value="<?= $result['name'] ?>" />
@@ -18,56 +18,35 @@
       <div class="form-group">
         <label for="family">Espèce</label>
         <select class="form-control-sm" id="family" name="family" value="<?= $result['family'] ?>">
-          <option>Poissons</option>
-          <option>Mollusques</option>
-          <option>Cnidaires</option>
-          <option>Arthropodes</option>
-          <option>Echinodermes</option>
-          <option>Spongiaires</option>
-          <option>Végétaux</option>
-          <option>Tuniciers</option>
-          <option>Vers</option>
-          <option>Mammifères</option>
-          <option>Bryozaires</option>
-          <option>Reptiles</option>
-          <option>Cténaires</option>
-          <option>Lichens</option>
+          <?php foreach(SPECIES as $specie) {
+            if ($result['family'] == $specie) {
+              echo "<option selected>$specie</option>";
+            }else{
+              echo "<option>$specie</option>";
+            }    
+          }?>
         </select>
       </div>
       <div class="form-group">
         <label for="profondeur">Profondeur minimale </label>
         <select class="form-control" id="deep_min" name="deep_min" value="<?= $result['deep_min'] ?>">
-          <option>0m</option>
-          <option>150m</option>
-          <option>300m</option>
-          <option>500m</option>
-          <option>1000m</option>
-          <option>2000m</option>
-          <option>3000m</option>
-          <option>4000m</option>
-          <option>5000m</option>
-          <option>6000m</option>
-          <option>7000m</option>
-          <option>8000m</option>
-          <option>9000m</option>
-          <option>10000m</option>
+          <?php foreach(DEEP_MIN as $val) {
+            if ($result['deep_min'] == $val) {
+              echo "<option selected>$val</option>";
+            }else{
+              echo "<option>$val</option>";
+            }    
+          }?>
         </select>
-        <label for="profondeur">Profondeur maximal</label>
+        <label for="profondeur">Profondeur maximale</label>
         <select class="form-control" id="deep_max" name="deep_max" value="<?= $result['deep_max'] ?>">
-          <option>150m</option>
-          <option>300m</option>
-          <option>500m</option>
-          <option>1000m</option>
-          <option>2000m</option>
-          <option>3000m</option>
-          <option>4000m</option>
-          <option>5000m</option>
-          <option>6000m</option>
-          <option>7000m</option>
-          <option>8000m</option>
-          <option>9000m</option>
-          <option>10000m</option>
-          <option>11000m</option>
+          <?php foreach(DEEP_MAX as $val) {
+            if ($result['deep_max'] == $val) {
+              echo "<option selected>$val</option>";
+            }else{
+              echo "<option>$val</option>";
+            }    
+          }?>
         </select>
       </div>
 
@@ -89,8 +68,8 @@
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea class="form-control" id="description" rows="3" cols="45" name="description"
-          value="<?= $result['description'] ?>"></textarea>
+        <textarea class="form-control" id="description" rows="3" cols="45"
+          name="description"><?= $result['description'] ?></textarea>
       </div>
       <div class="form-group">
         <label for="image_link">Lien image</label>

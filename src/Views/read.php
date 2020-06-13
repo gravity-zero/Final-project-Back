@@ -54,10 +54,10 @@
           <td><?= $params['food'] ?></td>
           <td><?= $params['video_link'] ?></td>
           <td><?= $params['video_alt'] ?></td>-->
-        <td><a href="?url=update/<?= $params['id'] ?>">
+        <td><a href="?url=update&id=<?= $params['id'] ?>">
             <button type="button" class="btn btn-success"> Modifier</button>
           </a></td>
-        <td><a href="?url=delete/<?= $params['id'] ?>"><button type="button"
+        <td><a href="?url=delete&id=<?= $params['id'] ?>"><button type="button"
               class="btn btn-danger">Supprimer</button></a>
         </td>
       </tr>

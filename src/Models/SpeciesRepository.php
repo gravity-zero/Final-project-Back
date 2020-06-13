@@ -1,5 +1,6 @@
 <?php
 namespace FinalBack\Models;
+use \PDO;
 
 class SpeciesRepository{
 
@@ -11,31 +12,20 @@ class SpeciesRepository{
 
     
    //Pour delete certaines entrées
-    public function deleteSpecies(){
-      $url = $_GET['url'];
-      if(preg_match('#delete/([0-9]+)#', $url, $params)){
-        $id = htmlspecialchars($params[1]);
-        $requete = $this->db->connection->prepare('DELETE FROM `species` WHERE `species`.`id` = :id');
-        $requete->bindValue(':id', $id, \PDO::PARAM_INT);
-        $requete->execute();
-      }
+    public function deleteSpecies($id){
+      $requete = $this->db->connection->prepare('DELETE FROM `species` WHERE `species`.`id` = :id');
+      $requete->bindValue(':id', $id, PDO::PARAM_INT);
+      $requete->execute();
     }
 
-    public function selectUpdateSpecies(){
-      $url = $_GET['url'];
-      if(preg_match('#update/([0-9]+)#', $url, $params)){
-      $id = htmlspecialchars($params[1]);
-      $requete = $this->db->connection->prepare("SELECT * FROM `species`  WHERE `species`.`id`= :id'");
-      $requete->bindValue(':id', $id, \PDO::PARAM_INT);
-      $requete->execute();
-      return $requete->fetchAll(\PDO::FETCH_ASSOC);
-    }
+    public function getSpeciesById($id){
+      $requete = $this->db->connection->prepare("SELECT * FROM `species` WHERE id= :id");
+      $requete->bindValue(':id', $id, PDO::PARAM_INT);
+      $requete->execute(); 
+      return $requete->fetch(PDO::FETCH_ASSOC);
   }
         
-    public function updateSpecies($param){
-      $url = $_GET['url'];
-      if(preg_match('#update/([0-9]+)#', $url, $params)){
-      $id = htmlspecialchars($params[1]);
+    public function updateSpecies($param, $id){
       if(isset($param)){
         $family = $param['family'];
         $name = $param['name'];
@@ -43,7 +33,7 @@ class SpeciesRepository{
         $deep_max = $param['deep_max'];
         $life_time = $param['life_time'];
         $weight = $param['weight'];
-        $size = $params['size'];
+        $size = $param['size'];
         $life_area = $param['life_area'];
         $description = $param['description'];
         $image_link = $param['image_link'];
@@ -53,41 +43,40 @@ class SpeciesRepository{
         $video_link = $param['video_link'];
         $video_alt = $param['video_alt'];
       }
-      try{
+     try{
         //instructions à faire dont certaines menent à une exception
         $sth = $this->db->connection->prepare(
-        'UPDATE `species` SET (family, name, deep_min, deep_max, life_time, weight, size, life_area, description, image_link, image_alt, reproduction, food, video_link, video_alt)
-         VALUES (:family,:name,:deep_min,:deep_max,:life_time,:weight,:size,:life_area,:description,:image_link,:image_alt,:reproduction,:food,:video_link,:video_alt) WHERE `species`.`id` = :id');
-            $sth->bindValue(':id', $id, \PDO::PARAM_INT);
-            $sth->bindParam(":family",$family, \PDO::PARAM_STR);
-            $sth->bindParam(":name",$name, \PDO::PARAM_STR);
-            $sth->bindParam(":deep_min",$deep_min, \PDO::PARAM_INT);
-            $sth->bindParam(":deep_max",$deep_max, \PDO::PARAM_INT);
-            $sth->bindParam(":life_time",$life_time, \PDO::PARAM_INT);
-            $sth->bindParam(":weight",$weight, \PDO::PARAM_INT);
-            $sth->bindParam(":size",$size, \PDO::PARAM_INT);
-            $sth->bindParam(":life_area",$life_area, \PDO::PARAM_STR);
-            $sth->bindParam(":description",$description, \PDO::PARAM_STR);
-            $sth->bindParam(":image_link",$image_link, \PDO::PARAM_STR);
-            $sth->bindParam(":image_alt",$image_alt, \PDO::PARAM_STR);
-            $sth->bindParam(":reproduction",$reproduction, \PDO::PARAM_STR);
-            $sth->bindParam(":food",$food, \PDO::PARAM_STR);
-            $sth->bindParam(":video_link",$video_link, \PDO::PARAM_STR);
-            $sth->bindParam(":video_alt",$video_alt, \PDO::PARAM_STR);
+        'UPDATE `species` 
+        SET family = :family, name = :name, deep_min = :deep_min, deep_max = :deep_max, life_time = :life_time, weight = :weight, size = :size, life_area = :life_area, description = :description, image_link = :image_link, image_alt = :image_alt ,video_link = :video_link, video_alt =:video_alt, reproduction =:reproduction, food =:food
+        WHERE id = :id');
+            $sth->bindValue(':id', $id, PDO::PARAM_INT);
+            $sth->bindParam(":family",$family, PDO::PARAM_STR);
+            $sth->bindParam(":name",$name, PDO::PARAM_STR);
+            $sth->bindParam(":deep_min",$deep_min, PDO::PARAM_INT);
+            $sth->bindParam(":deep_max",$deep_max, PDO::PARAM_INT);
+            $sth->bindParam(":life_time",$life_time, PDO::PARAM_INT);
+            $sth->bindParam(":weight",$weight, PDO::PARAM_INT);
+            $sth->bindParam(":size",$size, PDO::PARAM_INT);
+            $sth->bindParam(":life_area",$life_area, PDO::PARAM_STR);
+            $sth->bindParam(":description", $description, PDO::PARAM_STR);
+            $sth->bindParam(":image_link",$image_link, PDO::PARAM_STR);
+            $sth->bindParam(":image_alt",$image_alt, PDO::PARAM_STR);
+            $sth->bindParam(":reproduction",$reproduction, PDO::PARAM_STR);
+            $sth->bindParam(":food",$food, PDO::PARAM_STR);
+            $sth->bindParam(":video_link",$video_link, PDO::PARAM_STR);
+            $sth->bindParam(":video_alt",$video_alt, PDO::PARAM_STR);
             
             $sth->execute();
-
           } catch(\PDOException $e){
             echo 'Impossible de traiter les données. Erreur : '. $e->getMessage();
           }
-    }
   }
 
     // Pour afficher toutes les entrées
     public function showSpecies(){
       $requete = $this->db->connection->prepare("SELECT * FROM `species` ORDER BY `species`.`id` ASC");
       $requete->execute();
-      return $requete->fetchAll(\PDO::FETCH_ASSOC);
+      return $requete->fetchAll(PDO::FETCH_ASSOC);
     }
 
     // Pour afficher toutes les entrés au format JSON
@@ -122,21 +111,21 @@ class SpeciesRepository{
             'INSERT INTO species(family, name, deep_min, deep_max, life_time, weight, size, life_area, description, image_link, image_alt, reproduction, food, video_link, video_alt)
              VALUES (:family,:name,:deep_min,:deep_max,:life_time,:weight,:size,:life_area,:description,:image_link,:image_alt,:reproduction,:food,:video_link,:video_alt)');
             
-            $sth->bindParam(":family",$family, \PDO::PARAM_STR);
-            $sth->bindParam(":name",$name, \PDO::PARAM_STR);
-            $sth->bindParam(":deep_min",$deep_min, \PDO::PARAM_INT);
-            $sth->bindParam(":deep_max",$deep_max, \PDO::PARAM_INT);
-            $sth->bindParam(":life_time",$life_time, \PDO::PARAM_INT);
-            $sth->bindParam(":weight",$weight, \PDO::PARAM_INT);
-            $sth->bindParam(":size",$size, \PDO::PARAM_INT);
-            $sth->bindParam(":life_area",$life_area, \PDO::PARAM_STR);
-            $sth->bindParam(":description",$description, \PDO::PARAM_STR);
-            $sth->bindParam(":image_link",$image_link, \PDO::PARAM_STR);
-            $sth->bindParam(":image_alt",$image_alt, \PDO::PARAM_STR);
-            $sth->bindParam(":reproduction",$reproduction, \PDO::PARAM_STR);
-            $sth->bindParam(":food",$food, \PDO::PARAM_STR);
-            $sth->bindParam(":video_link",$video_link, \PDO::PARAM_STR);
-            $sth->bindParam(":video_alt",$video_alt, \PDO::PARAM_STR);
+            $sth->bindParam(":family",$family, PDO::PARAM_STR);
+            $sth->bindParam(":name",$name, PDO::PARAM_STR);
+            $sth->bindParam(":deep_min",$deep_min, PDO::PARAM_INT);
+            $sth->bindParam(":deep_max",$deep_max, PDO::PARAM_INT);
+            $sth->bindParam(":life_time",$life_time, PDO::PARAM_INT);
+            $sth->bindParam(":weight",$weight, PDO::PARAM_INT);
+            $sth->bindParam(":size",$size, PDO::PARAM_INT);
+            $sth->bindParam(":life_area",$life_area, PDO::PARAM_STR);
+            $sth->bindParam(":description",$description, PDO::PARAM_STR);
+            $sth->bindParam(":image_link",$image_link, PDO::PARAM_STR);
+            $sth->bindParam(":image_alt",$image_alt, PDO::PARAM_STR);
+            $sth->bindParam(":reproduction",$reproduction, PDO::PARAM_STR);
+            $sth->bindParam(":food",$food, PDO::PARAM_STR);
+            $sth->bindParam(":video_link",$video_link, PDO::PARAM_STR);
+            $sth->bindParam(":video_alt",$video_alt, PDO::PARAM_STR);
       
             $sth->execute();
           } catch(\PDOException $e){
