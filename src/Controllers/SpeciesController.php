@@ -42,10 +42,21 @@ class SpeciesController{
         return header('Location: ?url=show');
     }
 
+    
     function list(){
+        $this->enableCors();
         $data = $this->repository->getAllSpecies();
-        header('Content-Type: application/json');
         echo $this->serializeToJson($data);
+    }
+
+    function getOne($id){
+        $this->enableCors();
+        $data = $this->repository->getSpeciesById($id);
+        if($data){
+            echo $this->serializeToJson($data);
+        }else{
+            $this->error();
+        }
     }
 
     function error(){
@@ -56,5 +67,21 @@ class SpeciesController{
         $results["total_result"] = count($data);
         $response["results"]["species"] = $data;
         return json_encode($response);
+    }
+
+    //CORS ORIGIN
+    private function enableCors(){
+        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+            header('Access-Control-Allow-Origin: *');
+            header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT, PATCH, OPTIONS');
+            header('Access-Control-Allow-Headers: *');
+            header('Access-Control-Max-Age: 1728000');
+            header('Content-Length: 0');
+            header('Content-Type: text/plain');
+            die();
+        }
+
+        header('Access-Control-Allow-Origin: *');
+        header('Content-Type: application/json');
     }
 }

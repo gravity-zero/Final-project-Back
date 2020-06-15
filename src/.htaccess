@@ -4,7 +4,12 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?url=$1 [NC,L]
 
+Header set Access-Control-Allow-Origin: *
+Header set Access-Control-Allow-Headers: *
+
+
+
 AuthName "Page d'administration"
 AuthType Basic
-AuthUserFile "C:\wamp64\www\final_back\src\.htpasswd"
+AuthUserFile "/var/www/html/src/.htpasswd"
 Require valid-user

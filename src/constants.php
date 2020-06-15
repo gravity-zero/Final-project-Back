@@ -55,4 +55,4 @@ define('DB_NAME', 'api_pal');
 define('DB_HOST', 'localhost');
 define('DB_PORT', "3308");
 define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', '3562');

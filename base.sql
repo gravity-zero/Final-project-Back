@@ -4,7 +4,7 @@ Character set utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE api_pal;
 
---  Création de la table "species"
+
 CREATE TABLE IF NOT EXISTS species (
   id INT(4) NOT NULL AUTO_INCREMENT,
   family VARCHAR(255) NOT NULL,

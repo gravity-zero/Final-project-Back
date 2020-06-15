@@ -18,17 +18,18 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">id</th>
-        <th scope="col">family</th>
-        <th scope="col">deep_min</th>
-        <th scope="col">deep_max</th>
-        <th scope="col">life_time</th>
-        <th scope="col">weight</th>
-        <th scope="col">size</th>
-        <th scope="col">life_area</th>
+        <th scope="col">Id</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Famille</th>
+        <th scope="col">Profondeur_min</th>
+        <th scope="col">Profondeur_max</th>
+        <th scope="col">Durée de vie</th>
+        <th scope="col">Poids</th>
+        <th scope="col">Taille</th>
+        <th scope="col">Zone géo</th>
         <th scope="col">description</th>
-        <th scope="col">image_link</th>
-        <th scope="col">image_alt</th>
+        <th scope="col">Lien image</th>
+        <th scope="col">Alt image</th>
       </tr>
     </thead>
     <tbody>
@@ -40,6 +41,7 @@
       <tr>
         <td><?= $number ?></td>
         <td><?= $params['id'] ?></td>
+        <td><?= $params['name'] ?></td>
         <td><?= $params['family'] ?></td>
         <td><?= $params['deep_min'] ?></td>
         <td><?= $params['deep_max'] ?></td>
@@ -47,13 +49,11 @@
         <td><?= $params['weight'] ?></td>
         <td><?= $params['size'] ?></td>
         <td><?= $params['life_area'] ?></td>
-        <td class="text-ellipsis"><?= $params['description'] ?></td>
+        <td class="text-ellipsis">
+          <div class="table-height"><?= $params['description'] ?></div>
+        </td>
         <td><?= $params['image_link'] ?></td>
         <td><?= $params['image_alt'] ?></td>
-        <!--<td><?= $params['reproduction'] ?></td>
-          <td><?= $params['food'] ?></td>
-          <td><?= $params['video_link'] ?></td>
-          <td><?= $params['video_alt'] ?></td>-->
         <td><a href="?url=update&id=<?= $params['id'] ?>">
             <button type="button" class="btn btn-success"> Modifier</button>
           </a></td>

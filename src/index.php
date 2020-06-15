@@ -45,6 +45,9 @@ if(isset($_GET['url'])){
   {
     $controller->list();
   }
+  else if($url == 'getone'){
+    $controller->getOne($_GET['id']);
+  }
   else
   {
     $controller->error();
