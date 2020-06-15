@@ -13,6 +13,7 @@ $controller = new SpeciesController($species_repository);
 
 $url = null;
 
+// Permet d'assigner la route aux bonnes fonctions/pages/actions attendu. Chef d'Orchestre et pillier de l'architecture 
 if(isset($_GET['url'])){
   $url = $_GET['url'];
   }
@@ -32,20 +33,24 @@ if(isset($_GET['url'])){
   {
     $controller->show();
   }
-  else if($url == "update"){// affiche l'entrée à modifier
+  else if($url == "update") // affiche l'entrée à modifier 
+  {  
     $controller->showUpdate($_GET['id']);
   }
-  else if($url == 'postupdate'){// Post l'update
+  else if($url == 'postupdate')  // Post l'update
+  {
     $controller->update($_POST, $_GET['id']);
   }
-  else if($url == 'delete'){//Supprime l'entrée dans la base
+  else if($url == 'delete')  //Supprime l'entrée dans la base
+  {
     $controller->delete($_GET['id']);
   }
-  else if($url == 'list')  //Affiche le Json
+  else if($url == 'list') //Affiche la liste complète en base au format JSON
   {
     $controller->list();
   }
-  else if($url == 'getone'){
+  else if($url == 'getone') // Affiche une entrée séléctionné par son ID au format JSON
+  {
     $controller->getOne($_GET['id']);
   }
   else

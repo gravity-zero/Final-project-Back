@@ -11,20 +11,21 @@ class SpeciesRepository{
     }
 
     
-   //Pour delete certaines entrées
+   //Pour delete certaines entrées (utilisé dans read.php)
     public function deleteSpecies($id){
       $requete = $this->db->connection->prepare('DELETE FROM `species` WHERE `species`.`id` = :id');
       $requete->bindValue(':id', $id, PDO::PARAM_INT);
       $requete->execute();
     }
 
+    //Fonction permettant la récupération de l'id de l'entrée affiché dans read.php
     public function getSpeciesById($id){
       $requete = $this->db->connection->prepare("SELECT * FROM `species` WHERE id= :id");
       $requete->bindValue(':id', $id, PDO::PARAM_INT);
       $requete->execute(); 
       return $requete->fetch(PDO::FETCH_ASSOC);
   }
-        
+    //
     public function updateSpecies($param, $id){
       if(isset($param)){
         $family = $param['family'];
@@ -44,7 +45,6 @@ class SpeciesRepository{
         $video_alt = $param['video_alt'];
       }
      try{
-        //instructions à faire dont certaines menent à une exception
         $sth = $this->db->connection->prepare(
         'UPDATE `species` 
         SET family = :family, name = :name, deep_min = :deep_min, deep_max = :deep_max, life_time = :life_time, weight = :weight, size = :size, life_area = :life_area, description = :description, image_link = :image_link, image_alt = :image_alt ,video_link = :video_link, video_alt =:video_alt, reproduction =:reproduction, food =:food
@@ -106,7 +106,6 @@ class SpeciesRepository{
         }
       
         try{
-            //instructions à faire dont certaines menent à une exception
             $sth = $this->db->connection->prepare(
             'INSERT INTO species(family, name, deep_min, deep_max, life_time, weight, size, life_area, description, image_link, image_alt, reproduction, food, video_link, video_alt)
              VALUES (:family,:name,:deep_min,:deep_max,:life_time,:weight,:size,:life_area,:description,:image_link,:image_alt,:reproduction,:food,:video_link,:video_alt)');

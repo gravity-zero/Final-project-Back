@@ -21,19 +21,20 @@
         <th scope="col">Id</th>
         <th scope="col">Nom</th>
         <th scope="col">Famille</th>
-        <th scope="col">Profondeur_min</th>
-        <th scope="col">Profondeur_max</th>
-        <th scope="col">Durée de vie</th>
+        <th scope="col">P_min</th>
+        <th scope="col">P_max</th>
+        <th scope="col">D_vie</th>
         <th scope="col">Poids</th>
         <th scope="col">Taille</th>
         <th scope="col">Zone géo</th>
-        <th scope="col">description</th>
+        <th scope="col">desc</th>
         <th scope="col">Lien image</th>
         <th scope="col">Alt image</th>
       </tr>
     </thead>
     <tbody>
       <?php
+      //Number permet d'afficher le nombre d'élément présent dans la liste indépendamment de l'id qui n'est pas fiable pour cette information
         $number = 0;
         foreach ($requete as $params){
         $number++;
@@ -52,8 +53,10 @@
         <td class="text-ellipsis">
           <div class="table-height"><?= $params['description'] ?></div>
         </td>
-        <td><?= $params['image_link'] ?></td>
-        <td><?= $params['image_alt'] ?></td>
+        <td class="text-ellipsis">
+          <div class="table-height"><?= $params['image_link'] ?></div>
+        </td>
+        <td class="text-ellipsis"><?= $params['image_alt'] ?></td>
         <td><a href="?url=update&id=<?= $params['id'] ?>">
             <button type="button" class="btn btn-success"> Modifier</button>
           </a></td>

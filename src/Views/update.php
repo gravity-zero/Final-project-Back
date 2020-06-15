@@ -18,6 +18,7 @@
       <div class="form-group">
         <label for="family">Espèce</label>
         <select class="form-control-sm" id="family" name="family" value="<?= $result['family'] ?>">
+          <!--voir fichier constants.php + permet de récupérer la bonne valeur initialement rentrée en paramètre-->
           <?php foreach(SPECIES as $specie) {
             if ($result['family'] == $specie) {
               echo "<option selected>$specie</option>";

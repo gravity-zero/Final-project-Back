@@ -11,6 +11,9 @@
 </head>
 
 <body>
+  <nav aria-label="navigation">
+    <a href='?url=' class="previous"><img src=" css/images/back.png" class="back" alt=" Retour à l'index"></a>
+  </nav>
   <div class="form">
     <h1>Pannel Administration - Ajout</h1>
     <form method="post" action="?url=create" class="containerstyle">
@@ -21,56 +24,24 @@
       <div class="form-group">
         <label for="family">Espèce</label>
         <select class="form-control-sm" id="family" name="family">
-          <option>Poissons</option>
-          <option>Mollusques</option>
-          <option>Cnidaires</option>
-          <option>Arthropodes</option>
-          <option>Echinodermes</option>
-          <option>Spongiaires</option>
-          <option>Végétaux</option>
-          <option>Tuniciers</option>
-          <option>Vers</option>
-          <option>Mammifères</option>
-          <option>Bryozaires</option>
-          <option>Reptiles</option>
-          <option>Cténaires</option>
-          <option>Lichens</option>
+          <!--voir fichier constants.php-->
+          <?php foreach(SPECIES as $specie) {
+              echo "<option>$specie</option>";  
+          }?>
         </select>
       </div>
       <div class="form-group">
         <label for="profondeur">Profondeur minimale </label>
         <select class="form-control" id="deep_min" name="deep_min">
-          <option>0m</option>
-          <option>150m</option>
-          <option>300m</option>
-          <option>500m</option>
-          <option>1000m</option>
-          <option>2000m</option>
-          <option>3000m</option>
-          <option>4000m</option>
-          <option>5000m</option>
-          <option>6000m</option>
-          <option>7000m</option>
-          <option>8000m</option>
-          <option>9000m</option>
-          <option>10000m</option>
+          <?php foreach(DEEP_MIN as $val) {
+              echo "<option>$val</option>";  
+          }?>
         </select>
         <label for="profondeur">Profondeur maximal</label>
         <select class="form-control" id="deep_max" name="deep_max">
-          <option>150m</option>
-          <option>300m</option>
-          <option>500m</option>
-          <option>1000m</option>
-          <option>2000m</option>
-          <option>3000m</option>
-          <option>4000m</option>
-          <option>5000m</option>
-          <option>6000m</option>
-          <option>7000m</option>
-          <option>8000m</option>
-          <option>9000m</option>
-          <option>10000m</option>
-          <option>11000m</option>
+          <?php foreach(DEEP_MAX as $val) {
+              echo "<option>$val</option>";  
+          }?>
         </select>
       </div>
 
