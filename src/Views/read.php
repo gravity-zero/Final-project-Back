@@ -11,6 +11,9 @@
 </head>
 
 <body class="container" id="body-read">
+  <nav aria-label="navigation">
+    <a href='?url=' class="previous"><img src=" css/images/back.png" class="back" alt=" Retour à l'index"></a>
+  </nav>
   <div class="titre">
     <h1>Affichage des entrées</h1>
   </div>
@@ -69,7 +72,7 @@
       ?>
     </tbody>
   </table>
-  <div class="option"> <a href="?url=form"><button type="button" class="btn btn-light">Ajouter une
+  <div class="option" id="createNew"> <a href="?url=form"><button type="button" class="btn btn-light">Ajouter une
         espèce</button></a>
   </div>
 </body>

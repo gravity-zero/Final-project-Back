@@ -16,7 +16,7 @@ $controller = new SpeciesController($species_repository);
 
 $url = null;
 
-// Permet d'assigner la route aux bonnes fonctions/pages/actions attendu. Chef d'Orchestre et pillier de l'architecture 
+// Permet d'assigner la route aux bonnes fonctions/pages/actions attendu.
 if(isset($_GET['url'])){
   $url = $_GET['url'];
   }

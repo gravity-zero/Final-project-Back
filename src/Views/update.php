@@ -97,7 +97,7 @@
         <input class="form-control-sm" type="text" name="video_alt" value="<?= $result['video_alt'] ?>" />
       </div>
       <div class="form-group" id="addButton">
-        <input class=" btn btn-outline-primary" type="submit" value="Ajouter" />
+        <input class=" btn btn-outline-primary" type="submit" value="Valider Modification" />
       </div>
     </form>
   </div>
