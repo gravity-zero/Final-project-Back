@@ -37,7 +37,7 @@
               echo "<option>$val</option>";  
           }?>
         </select>
-        <label for="profondeur">Profondeur maximal</label>
+        <label for="profondeur">Profondeur maximale</label>
         <select class="form-control" id="deep_max" name="deep_max">
           <?php foreach(DEEP_MAX as $val) {
               echo "<option>$val</option>";  

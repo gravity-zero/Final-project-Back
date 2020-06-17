@@ -2,9 +2,7 @@
 namespace FinalBack\Models;
 use \PDO;
 
-/**
- * SpeciesRepository
- */
+
 class SpeciesRepository{
 
     private $db;
@@ -13,15 +11,12 @@ class SpeciesRepository{
       $this->db = $db;
     }
 
-    
-   //Pour delete certaines entrées (utilisé dans read.php)
     public function deleteSpecies($id){
       $requete = $this->db->connection->prepare('DELETE FROM `species` WHERE `species`.`id` = :id');
       $requete->bindValue(':id', $id, PDO::PARAM_INT);
       $requete->execute();
     }
 
-    //Fonction permettant la récupération de l'id de l'entrée affiché dans read.php
     public function getSpeciesById($id){
       $requete = $this->db->connection->prepare("SELECT * FROM `species` WHERE id= :id");
       $requete->bindValue(':id', $id, PDO::PARAM_INT);
@@ -75,14 +70,12 @@ class SpeciesRepository{
           }
   }
 
-    // Pour afficher toutes les entrées
     public function showSpecies(){
       $requete = $this->db->connection->prepare("SELECT * FROM `species` ORDER BY `species`.`id` ASC");
       $requete->execute();
       return $requete->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Pour afficher toutes les entrés au format JSON
     public function getAllSpecies(){
         $requete = $this->db->connection->prepare("SELECT * FROM `species`");
         $requete->execute();

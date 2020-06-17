@@ -16,43 +16,42 @@ $controller = new SpeciesController($species_repository);
 
 $url = null;
 
-// Permet d'assigner la route aux bonnes fonctions/pages/actions attendu.
 if(isset($_GET['url'])){
   $url = $_GET['url'];
   }
 
-  if ($url == '') { //Affiche le pannel admin
+  if ($url == '') {
     $controller->index();
   }
-  else if($url == 'form') //Affiche le formulaire
+  else if($url == 'form')
   {
     $controller->form();
   }
-  else if($url == 'create') // Post le formulaire
+  else if($url == 'create')
   {
     $controller->create();
   }
-  else if($url == 'show') //Affiche sous forme de Tableau la base
+  else if($url == 'show')
   {
     $controller->show();
   }
-  else if($url == "update") // affiche l'entrée à modifier 
+  else if($url == "update")
   {  
     $controller->showUpdate($_GET['id']);
   }
-  else if($url == 'postupdate')  // Post l'update
+  else if($url == 'postupdate')
   {
     $controller->update($_POST, $_GET['id']);
   }
-  else if($url == 'delete')  //Supprime l'entrée dans la base
+  else if($url == 'delete')
   {
     $controller->delete($_GET['id']);
   }
-  else if($url == 'list') //Affiche la liste complète en base au format JSON
+  else if($url == 'list')
   {
     $controller->list();
   }
-  else if($url == 'getone') // Affiche une entrée séléctionné par son ID au format JSON
+  else if($url == 'getone')
   {
     $controller->getOne($_GET['id']);
   }

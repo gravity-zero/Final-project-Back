@@ -34,7 +34,7 @@ Je suis passé par un routing "fait à la main" n'ayant pas pu prendre le temps 
 
 
 #Crédit :
-Merci à Constantin Guidon pour son aide précieuse et appréciée, son temps et ses explications (POO, Injection de dépendance, rooting & autres).
+Merci à Constantin Guidon pour son aide précieuse et appréciée, son temps et ses explications (POO, Injection de dépendance, routing & autres).
 - Graphikart
 - [Nouvelle techno](https://nouvelle-techno.fr/)
 - [Mikecodeur](https://www.mikecodeur.com/)
