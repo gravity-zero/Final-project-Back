@@ -2,6 +2,9 @@
 namespace FinalBack\Models;
 use \PDO;
 
+/**
+ * SpeciesRepository
+ */
 class SpeciesRepository{
 
     private $db;
@@ -25,7 +28,7 @@ class SpeciesRepository{
       $requete->execute(); 
       return $requete->fetch(PDO::FETCH_ASSOC);
   }
-    //
+
     public function updateSpecies($param, $id){
       if(isset($param)){
         $family = $param['family'];

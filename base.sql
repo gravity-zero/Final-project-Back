@@ -4,7 +4,6 @@ Character set utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE api_pal;
 
-
 CREATE TABLE IF NOT EXISTS species (
   id INT(4) NOT NULL AUTO_INCREMENT,
   family VARCHAR(255) NOT NULL,
@@ -18,9 +17,12 @@ CREATE TABLE IF NOT EXISTS species (
   description TEXT NOT NULL,
   image_link VARCHAR(255) NULL,
   image_alt VARCHAR(255) NULL,
-  reproduction VARCHAR(255) NULL,
-  food VARCHAR(255) NULL,
+  reproduction TEXT NULL,
+  food TEXT NULL,
   video_link VARCHAR(255) NULL,
   video_alt VARCHAR(255) NULL,
   PRIMARY KEY (`id`)
 )ENGINE=innodb;
+
+
+-- Remplacement de certaines Valeur VARCHAR par TEXT (pas assez de caractère disponible dans certaines situations sur ces tables).
