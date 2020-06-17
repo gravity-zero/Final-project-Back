@@ -3,6 +3,20 @@ namespace FinalBack\Models;
 use \PDO;
 
 
+ /**
+  * SpeciesRepository contient toutes les fonctions à exécuter suivant les instructions de Species Constroller via index
+  *
+  * Liste des fonctions : 
+  * - deleteSpecies (Suppréssion d'une entrée dans la base par son ID)
+  * - getSpeciesById (Récupère l'ID d'une entrée)
+  * - UpdateSpecies (Permet de populer un formulaire d'édition grâce à l'ID préalablement récupéré)
+  * - showSpecies (Récupère toutes les entrées en base en les triants par numéro d'ID)
+  * - getAllSpecies (Récupère toutes les entrées en base)
+  *
+  * 
+  * @author   FEREGOTTO Romain <romain.feregotto@hetic.net>
+  */
+  
 class SpeciesRepository{
 
     private $db;
@@ -10,21 +24,34 @@ class SpeciesRepository{
     function __construct($db){
       $this->db = $db;
     }
-
-    public function deleteSpecies($id){
+    
+    public function deleteSpecies(int $id){
       $requete = $this->db->connection->prepare('DELETE FROM `species` WHERE `species`.`id` = :id');
       $requete->bindValue(':id', $id, PDO::PARAM_INT);
       $requete->execute();
     }
-
-    public function getSpeciesById($id){
+        
+    /**
+     * getSpeciesById Sélectionne une espèce par son ID en base
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function getSpeciesById(int $id){
       $requete = $this->db->connection->prepare("SELECT * FROM `species` WHERE id= :id");
       $requete->bindValue(':id', $id, PDO::PARAM_INT);
       $requete->execute(); 
       return $requete->fetch(PDO::FETCH_ASSOC);
   }
-
-    public function updateSpecies($param, $id){
+    
+    /**
+     * updateSpecies met à jour l'entrée en base (via son ID) en récupérant les nouvelles informations via le formulaire d'édition
+     *
+     * @param  mixed $param
+     * @param  int $id
+     * @return void
+     */
+    public function updateSpecies($param,int $id){
       if(isset($param)){
         $family = $param['family'];
         $name = $param['name'];
@@ -75,13 +102,23 @@ class SpeciesRepository{
       $requete->execute();
       return $requete->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    
     public function getAllSpecies(){
         $requete = $this->db->connection->prepare("SELECT * FROM `species`");
         $requete->execute();
         return $requete->fetchAll();
     }
 
+        
+    /**
+     * createSpecies Récupère les information contenu dans le formulaire et les envoies en base
+     *
+     * @param  mixed $params
+     * @throws PDOException Message d'erreur indiquant l'impossibilité de traiter les données
+     * @return void
+     * 
+     * @author YAFU Jonathan(jonathan.yafu@hetic.net) & FEREGOTTO Romain (romain.feregotto@hetic.net)
+     */
     public function createSpecies($params){
       if(isset($params)){
           $family = $params['family'];
