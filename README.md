@@ -1,8 +1,5 @@
 # Final-project-Back
 
-Back-office permettant l'ajout, la suppression et la modification d'espèces via un formulaire.
-Création d'une api pour récupérer les informations stocké en base.
-
 adresse publique du serveur : https://pal.romain-feregotto.fr
 login/mdp : admin/admin
 Site hébergé sur AWS & disposant d'un certificat permettant le https voir[Résultat SSLLABS](https://www.ssllabs.com/ssltest/analyze.html?d=pal.romain%2dferegotto.fr&latest)
@@ -32,6 +29,9 @@ Je suis passé par un routing "fait à la main" n'ayant pas pu prendre le temps 
 
 - Romain FEREGOTTO
 - Jonathan YAFU 
+
+#Disclaimer: "Ce site a été réalisé à des fins pédagogiques dans le cadre du cursus Bachelor de l’école HETIC. Les contenus présentés n'ont pas fait l'objet d'une demande de droit d'utilisation. Ce site ne sera en aucun cas exploité à des fins commerciales et ne sera pas publié”
+
 
 #Crédit :
 Merci à Constantin Guidon pour son aide précieuse et appréciée, son temps et ses explications (POO, Injection de dépendance, rooting & autres).
